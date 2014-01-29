@@ -1,19 +1,49 @@
 <html>
+<head>
 <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 <script language="javascript" src="nwunsch.js"></script>
+<style type="text/css">
+body {
+	font-family: Verdana,Arial,Helvetica,sans-serif;
+	font-size: 14px;
+	margin: 1.2em;
+}
+
+.fixed {
+	font-family: 'Courier New', monospace;
+}
+
+</style>
+</head>
 <body>
+<a href="https://github.com/ahuPowerDNS/nwunsch"><img style="position: absolute; top: 0;
+right: 0; border: 0;"
+src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"
+alt="Fork me on GitHub"></a>
+<H1>Needleman-Wunsch</H1>
+<p>
+This is a demonstration of the <a
+href="http://en.wikipedia.org/wiki/Needleman%E2%80%93Wunsch_algorithm">Needleman-Wunsch</a> alignment algorithm,
+invented in 1970 and still strikingly smart.<br/>The <a
+href="nwunsch.js">implementation</a> was inspired by the example found in
+the third edition of <a href="http://www.nr.com/">Numerical Recipes</a>.
+</p>
+<p>
+Enter any two strings. Most fun if they have some similarity.
+</p>
 <form>
 <input id="a" onChange="update();" onKeypress="update();" oninput="update();"></input><br/>
 <input id="b" onChange="update();" onKeypress="update();" oninput="update();"></input><br/>
 </form>
 
-<pre id="newA"></pre>
-<pre id="newB"></pre>
-<pre id="summary"></pre>
-
+<pre class="fixed" id="newA"></pre>
+<pre class="fixed" id="newB"></pre>
+<pre class="fixed" id="summary"></pre>
 
 <table id="mat" cellspacing="10" border="0">
 </table>
-
+<small>Questions &amp; remarks more than welcome on bert hubert
+&lt;bert.hubert@netherlabs.nl&gt;, or see <a
+href="http://ds9a.nl/">http://ds9a.nl</a>.
 </body>
 </html>

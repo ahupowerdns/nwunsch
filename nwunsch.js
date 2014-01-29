@@ -1,5 +1,3 @@
-var matrix=[];
-
 function stringalign(ainstr, binstr, mispen, gappen, skwpen)
 {
    ain = ainstr.split('');
@@ -12,8 +10,11 @@ function stringalign(ainstr, binstr, mispen, gappen, skwpen)
    var summary=[];
 
    var cost=[];
-   for(n=0 ; n < ia+1 ;++n)
+   var marked=[];
+   for(n=0 ; n < ia+1 ;++n) {
        cost[n] = new Array(ib+1);
+       marked[n] = new Array(ib+1);
+   }
 
    cost[0][0] = 0.;
    for (i=1;i<=ia;i++) cost[i][0] = cost[i-1][0] + skwpen;
@@ -26,6 +27,7 @@ function stringalign(ainstr, binstr, mispen, gappen, skwpen)
    }
    i=ia; j=ib; k=0;
    while (i > 0 || j > 0) {
+       marked[i][j]=1;       
        dn = rt = dg = 9.99e99;
        if (i>0) dn = cost[i-1][j] + ((j==ib)? skwpen : gappen);
        if (j>0) rt = cost[i][j-1] + ((i==ia)? skwpen : gappen);
@@ -49,6 +51,7 @@ function stringalign(ainstr, binstr, mispen, gappen, skwpen)
            summary[k++] = ' ';
            j--;
        }
+       marked[i][j]=1;       
     }
     for (i=0;i<k/2;i++) {
         var t = aout[k-1-i];
@@ -64,20 +67,27 @@ function stringalign(ainstr, binstr, mispen, gappen, skwpen)
         summary[i]=t;
     }
     aout.size=k; bout.size=k; summary.size=k;
-    console.log(aout.join(''));
-    console.log(bout.join(''));
-    console.log(summary.join(''));
+//    console.log(aout.join(''));
+//   console.log(bout.join(''));
+//    console.log(summary.join(''));
    
     var table=""; 
     table+="<tr><td></td>";
     for(n=0; n<bin.length;++n)
-        table+="<td>"+bin[n]+"</td>";
+        table+="<th>"+bin[n]+"</th>";
     table+="</tr>";
     for(n=0; n < cost.length; ++n)  {
         table+="<tr>";
-        table+="<td>"+ain[n]+"</td>";
-        for(m=0; m < cost[n].length; ++m)
-            table+="<td>"+cost[n][m] +"</td>";
+        if(n < cost.length - 1)
+            table+="<th>"+ain[n]+"</th>";
+        else
+            table+="<td></td>";
+        for(m=0; m < cost[n].length; ++m) {
+            if(marked[n][m]==1)
+                table+='<td align="center" bgcolor="#ff0000">'+cost[n][m] +"</td>";
+            else
+                table+='<td align="center">'+cost[n][m] +"</td>";
+        }
         table+="</tr>";
     }
     $("#mat").html(table);
@@ -89,11 +99,11 @@ function stringalign(ainstr, binstr, mispen, gappen, skwpen)
 
 function update()
 {
-    console.log("update called");
-    stringalign($("#a").val(), $("#b").val(), 1, 1, 0);
+//    console.log("update called");
+    stringalign($("#a").val(), $("#b").val(), 1, 1, 0.5);
 }
        
 $(function() {
-    console.log( "ready!" );
+//    console.log( "ready!" );
 
 });
