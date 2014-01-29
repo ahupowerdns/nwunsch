@@ -39,9 +39,21 @@ Enter any two strings. Most fun if they have some similarity.
 <pre class="fixed" id="newA"></pre>
 <pre class="fixed" id="newB"></pre>
 <pre class="fixed" id="summary"></pre>
-
+<h3>Matrix</h3>
 <table id="mat" cellspacing="10" border="0">
+<tr><td>...</td></tr>
 </table>
+<p>
+In the matrix above, start at the top left. Red marks the path, a downwards
+move means 'pick a character from string A, not from B', a move to the right
+'pick a character from string B, not from A'. A diagonal move means pick a
+character from both. If the characters match, this lowers the penalty by a point. If they
+don't match we do get a penalty.
+</p>
+<p>
+The path is picked by starting at the bottom right, and finding the way back
+to the top left with the least penalties.
+</p>
 <small>Questions &amp; remarks more than welcome on bert hubert
 &lt;bert.hubert@netherlabs.nl&gt;, or see <a
 href="http://ds9a.nl/">http://ds9a.nl</a>.
