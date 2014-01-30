@@ -11,6 +11,7 @@ body {
 
 .fixed {
 	font-family: 'Courier New', monospace;
+	font-size: 20px;	
 }
 
 </style>
@@ -32,26 +33,22 @@ the third edition of <a href="http://www.nr.com/">Numerical Recipes</a>.
 Enter any two strings. Most fun if they have some similarity.
 </p>
 <form>
-<input id="a" onChange="update();" onKeypress="update();" oninput="update();"></input><br/>
-<input id="b" onChange="update();" onKeypress="update();" oninput="update();"></input><br/>
-<!--
 <table>
-<tr>
-<td>Mismatch penalty</td><td><input id="mispen" onChange="update();" onKeypress="update();" oninput="update();"></input></td>
-</tr>
-<tr>
-<td>Gap penalty</td><td><input id="gappen" onChange="update();" onKeypress="update();" oninput="update();"></input></td>
-</tr>
-<tr>
-<td>Skew penalty</td><td><input id="skewpen" onChange="update();" onKeypress="update();" oninput="update();"></input></td>
+<tr valign="top"><td>
+A: <input id="a" size="40" onChange="update();" onKeypress="update();" oninput="update();"></input><br/>
+B: <input id="b" size="40" onChange="update();" onKeypress="update();" oninput="update();"></input>
+</td><td>&nbsp;&nbsp;&nbsp;</td>
+<td align="right">
+Mismatch penalty: <input id="mispen" size="3" value="1" onChange="update();" onKeypress="update();" oninput="update();"></input><br/>
+Gap penalty: <input id="gappen" size="3" value="1" onChange="update();" onKeypress="update();" oninput="update();"></input><br/>
+Skew penalty: <input id="skwpen" size="3" value="0.5" onChange="update();" onKeypress="update();" oninput="update();"></input></td>
 </tr>
 </table>
--->
 </form>
 
-<pre class="fixed" id="newA"></pre>
-<pre class="fixed" id="newB"></pre>
-<pre class="fixed" id="summary"></pre>
+<div class="fixed" id="newA"></div>
+<div class="fixed" id="newB"></div>
+<div class="fixed" id="summary"></div>
 <h3>Matrix</h3>
 <table id="mat" cellspacing="10" border="0">
 <tr><td>...</td></tr>

@@ -91,16 +91,16 @@ function stringalign(ainstr, binstr, mispen, gappen, skwpen)
         table+="</tr>";
     }
     $("#mat").html(table);
-    $("#newA").text(aout.join(""));
-    $("#newB").text(bout.join(""));
-    $("#summary").text(summary.join(""));
+    $("#newA").html(aout.join("").replace(/ /g, "&nbsp;"));
+    $("#newB").html(bout.join("").replace(/ /g, "&nbsp;"));
+    $("#summary").html(summary.join("").replace(/ /g, "&nbsp;"));
     
 }                                 
 
 function update()
 {
 //    console.log("update called");
-    stringalign($("#a").val(), $("#b").val(), 1, 1, 0.5);
+    stringalign($("#a").val(), $("#b").val(), 1.0*$("#mispen").val(), 1.0*$("#gappen").val(), 1.0*$("#skwpen").val());
 }
        
 $(function() {
